@@ -16,7 +16,9 @@ for (const product of products) {
 }
 
 // Add an event listener for the "Sell" button
-document.getElementById('Sell').addEventListener('click', function() {
+document.getElementById('sell').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
     // Track purchase event in GA4
     gtag('event', 'purchase', {
         'items': [
@@ -24,7 +26,7 @@ document.getElementById('Sell').addEventListener('click', function() {
                 'id': 'RF_123', // Replace with the actual product ID
                 'name': 'iPhone', // Replace with the actual product name
                 'quantity': 1,
-                'price': 19.99 // Replace with the actual product price
+                'price': 19 // Replace with the actual product price
             }
         ]
     });
@@ -50,6 +52,7 @@ sellForm.addEventListener('submit', (event) => {
     option.textContent = productName;
     buybackProductSelect.appendChild(option);
 
+    // Note: Remove this line if you don't want to reset the form after submission
     sellForm.reset(); // Clear the form fields
 });
 
