@@ -15,6 +15,23 @@ for (const product of products) {
     buybackProductSelect.appendChild(option);
 }
 
+// Add an event listener for the "Sell" button
+document.getElementById('Sell').addEventListener('click', function() {
+    // Track purchase event in GA4
+    gtag('event', 'purchase', {
+        'items': [
+            {
+                'id': 'RF_123', // Replace with the actual product ID
+                'name': 'iPhone', // Replace with the actual product name
+                'quantity': 1,
+                'price': 19.99 // Replace with the actual product price
+            }
+        ]
+    });
+
+    // Additional logic related to the "Sell" button click can be added here
+});
+
 sellForm.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
